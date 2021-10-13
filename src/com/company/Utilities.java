@@ -3,10 +3,8 @@ package com.company;
 public class Utilities {
 
     //Healing
-    private int firstAid;
-    private int firstAidAmount = 0;
-    private int adrenalineSyringe;
-    private int adrenalineSyringeAmount = 0;
+    private int firstAidAmount;
+    private int adrenalineSyringeAmount;
 
     //Weapon
     private int weaponDamageMin;
@@ -16,21 +14,25 @@ public class Utilities {
     private int handgrenadeAmount = 0;
 
 
-    //Default constructor
+    //Default Constructor
     public Utilities() {
     }
 
-    //HÃ¥ndgranat Contructor
+    //Håndgranat Contructor
     public Utilities(int handgrenadeAmount) {
         this.handgrenadeAmount = handgrenadeAmount;
     }
 
     //Weapon Constructor
     public Utilities(int weaponDamageMin, int weaponDamageMax, int mag) {
-
         this.weaponDamageMin = weaponDamageMin;
         this.weaponDamageMax = weaponDamageMax;
         this.mag = mag;
+    }
+
+    public Utilities(int firstAidAmount, int adrenalineSyringeAmount) {
+        this.firstAidAmount = firstAidAmount;
+        this.adrenalineSyringeAmount = adrenalineSyringeAmount;
     }
 
     //Metoder
@@ -38,8 +40,7 @@ public class Utilities {
 
         if (getFirstAidAmount() >= 1) {
             player.setPlayerHP(player.getPlayerHP() + 65);
-            System.out.println(player.getPlayerName() + " healed for: 65");
-
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  " + player.getPlayerName() + " healed for: 65");
             setFirstAidAmount(getFirstAidAmount() - 1);
         } else {
             System.out.println("You don't have a first aid kit!");
@@ -48,10 +49,10 @@ public class Utilities {
 
     public void adrenalineSyringe(Player player) {
 
-        if (getAdrenalineSyringe() >= 1) {
+        if (getAdrenalineSyringeAmount() >= 1) {
             player.setPlayerHP(player.getPlayerHP() + 35);
-            System.out.println(player.getPlayerName() + " healed for: " + getAdrenalineSyringe());
-            setAdrenalineSyringeAmount(getAdrenalineSyringe() - 1);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  " + player.getPlayerName() + " healed for: 35");
+            setAdrenalineSyringeAmount(getAdrenalineSyringeAmount() - 1);
         } else {
             System.out.println("You don't have any adrenaline syringes!");
         }
@@ -59,26 +60,15 @@ public class Utilities {
 
 
     //Getters and setters
-    public int getFirstAid() {
-        return firstAid;
-    }
-    public void setFirstAid(int firstAid) {
-        this.firstAid = firstAid;
-    }
-
     public int getFirstAidAmount() {
         return firstAidAmount;
     }
-    public void setFirstAidAmount(int firstAidAmount) {
+
+    public void setFirstAidAmount(int firstAidAmount)
+    {
         this.firstAidAmount = firstAidAmount;
     }
 
-    public int getAdrenalineSyringe() {
-        return adrenalineSyringe;
-    }
-    public void setAdrenalineSyringe(int adrenalineSyringe) {
-        this.adrenalineSyringe = adrenalineSyringe;
-    }
     public int getAdrenalineSyringeAmount() {
         return adrenalineSyringeAmount;
     }
@@ -90,16 +80,12 @@ public class Utilities {
         return weaponDamageMin;
     }
 
-    public void setWeaponDamageMin(int weaponDamageMin) {
-        this.weaponDamageMin = weaponDamageMin;
-    }
+
     public int getWeaponDamageMax() {
         return weaponDamageMax;
     }
 
-    public void setWeaponDamageMax(int weaponDamageMax) {
-        this.weaponDamageMax = weaponDamageMax;
-    }
+
     public int getMag() {
         return mag;
     }

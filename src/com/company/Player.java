@@ -6,13 +6,13 @@ public class Player {
 
     private String playerName;
     private int playerHP;
-
     private int playerAttackMin;
     private int playerAttackMax;
 
-    private Utilities mp7A2 = new Utilities(14, 28, 0);
+    private Utilities mp7A2 = new Utilities(14, 25, 3);
     private Utilities coltM10 = new Utilities(21, 39, 0);
     private Utilities handgrenade = new Utilities(0);
+    private Utilities healingKit = new Utilities(0, 1);
 
 
     public Player(String playerName, int playerHP, int playerAttackMin, int playerAttackMax) {
@@ -22,14 +22,14 @@ public class Player {
         this.playerAttackMax = playerAttackMax;
     }
 
-
-
+    /*public Player(Utilities mp7A2) { //TODO slet evt.
+        this.mp7A2 = mp7A2;
+    }*/
 
     //Getters and setters
     public int getPlayerHP() {
         return playerHP;
     }
-
     public void setPlayerHP(int playerHP) {
         this.playerHP = playerHP;
     }
@@ -80,6 +80,26 @@ public class Player {
         }
     }
 
+    public Utilities getHealingKit() {
+        return healingKit;
+    }
+
+    public void setMp7A2(Utilities mp7A2) {
+        this.mp7A2 = mp7A2;
+    }
+
+    public void setColtM10(Utilities coltM10) {
+        this.coltM10 = coltM10;
+    }
+
+    public void setHandgrenade(Utilities handgrenade) {
+        this.handgrenade = handgrenade;
+    }
+
+    public void setHealingKit(Utilities healingKit) {
+        this.healingKit = healingKit;
+    }
+
     public int getplayerAttackMin() {
         return playerAttackMin;
     }
@@ -105,4 +125,6 @@ public class Player {
     public Utilities getHandgrenade() {
         return handgrenade;
     }
+
+
 }

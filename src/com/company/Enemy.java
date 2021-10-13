@@ -15,13 +15,11 @@ public class Enemy {
 
     //Constructor
     public Enemy(String enemyName, int enemyHP, int enemyRage, int enemyATKMin, int enemyATKMax) {
-
         this.enemyName = enemyName;
         this.enemyHP = enemyHP;
         this.enemyRage = enemyRage;
         this.enemyATKMin = enemyATKMin;
         this.enemyATKMax = enemyATKMax;
-
     }
 
     //Getters and Setters
@@ -47,7 +45,7 @@ public class Enemy {
     }
 
     //bruger enemyattackmax og enemyattackmin, til at udregne og returne enemy attack
-    //der er 30% chance for at der kommer "critical hit"
+    //der er 30% chance for at der kommer et "critical hit"
     public int getEnemyATK() {
         Random random = new Random();
         if (Math.random() > 0.70 && enemyRage < 30) {
@@ -56,17 +54,17 @@ public class Enemy {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>  " + enemyName + "'s attack: Critical hit: " + crit);
             return crit;
         }
-        else if (Math.random() > 0.45 && enemyRage > 30) {
+        else if (Math.random() > 0.45 && enemyRage >= 30) {
             //RAGE attack
             int rageCrit = random.nextInt(enemyATKMax - enemyATKMin) + 18;
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>  " + enemyName + "'s attack: RAGE hit: " + rageCrit);
             enemyRage = enemyRage - 30;
             return rageCrit;
         }
-        else if(enemyRage > 30){
+        else if(enemyRage >= 30){
             //RAGE attack missed
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>  " + enemyName + "'s attack: RAGE hit missed!");
-            int enemyRage = getEnemyRage() - 30;
+            enemyRage = enemyRage  - 30;
             return enemyRage;
         }
         else if(Math.random() > 0.15) {
