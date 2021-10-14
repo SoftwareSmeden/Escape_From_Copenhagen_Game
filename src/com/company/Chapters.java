@@ -1,17 +1,24 @@
 package com.company;
-
 import java.util.Scanner;
 
 public class Chapters {
-
+    //Creating a player, a controller and a scanner
     Scanner input = new Scanner(System.in);
-    Player player = new Player("", 100, 5, 15);
+    Player player = new Player("", 100, 5, 25);
+    Controller controller = new Controller();
 
+    //Created arrays with shouts for the enemy to use
+    String[] infectedShouts = {"GRRR...", "ARGHHH..."};
+    String[] deathShouts = {"gurghh...", "urghh..."};
+    String[] boss1Shouts = {"METTE PAN!!!", "I HATE CODESMELL!!!","MARKDOWNS FOR FUCK SAKE!!!"};
+    String[] boss2Shouts = {"MY BOAT!!!", "NOKIA USED TO BE COOL!!!", "IT MILLIARDÆRER!!!"};
+
+    //playerCreation allows the user to enter a name for the player object
     public String playerCreation() {
         System.out.print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" + "What's your name? (Type your player name and press 'Enter')\n");
         String playerName = input.nextLine();
         System.out.println(
-                        "      ////^\\\\\\\\\n" +
+                "      ////^\\\\\\\\\n" +
                         "      | ^   ^ |\n" +
                         "     @ (o) (o) @\n" +
                         "      |   <   |    \n" +
@@ -21,32 +28,49 @@ public class Chapters {
                         "    /    \\__/    \\\n" +
                         "   /              \\\n" +
                         "  /\\_/|        |\\_ \\\n" +
-                        " / /  |        |  \\ \\\n");
+                        " / /  |        |  \\ \\");
 
         System.out.println("Hello " + playerName + "!");
         return playerName;
     }
 
+    //Chapter 1 starts here
     public void chapter_1(){
-        Enemy firstEnemy = new Enemy("Infected",50, 0, 5, 11);
-        Enemy secondEnemy = new Enemy("Infected",80,15,13, 15);
+        Enemy firstEnemy = new Enemy("Infected",50, 0, 5, 11, infectedShouts, deathShouts,2, 0, 1, 1,0);
+        Enemy secondEnemy = new Enemy("Infected",80,15,13, 15, infectedShouts, deathShouts, 0, 0,1,0,0);
+        Battle fight = new Battle(firstEnemy, player);
 
-        Utilities utilities = new Utilities();
+        System.out.println(""+
+                "███████╗███████╗ ██████╗ █████╗ ██████╗ ███████╗                                      \n" +
+                "██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝                                      \n" +
+                "█████╗  ███████╗██║     ███████║██████╔╝█████╗                                        \n" +
+                "██╔══╝  ╚════██║██║     ██╔══██║██╔═══╝ ██╔══╝                                        \n" +
+                "███████╗███████║╚██████╗██║  ██║██║     ███████╗                                      \n" +
+                "╚══════╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚══════╝                                      \n" +
+                "                                                                                      \n" +
+                "███████╗██████╗  ██████╗ ███╗   ███╗                                                  \n" +
+                "██╔════╝██╔══██╗██╔═══██╗████╗ ████║                                                  \n" +
+                "█████╗  ██████╔╝██║   ██║██╔████╔██║                                                  \n" +
+                "██╔══╝  ██╔══██╗██║   ██║██║╚██╔╝██║                                                  \n" +
+                "██║     ██║  ██║╚██████╔╝██║ ╚═╝ ██║                                                  \n" +
+                "╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                  \n" +
+                "                                                                                      \n" +
+                " ██████╗ ██████╗ ██████╗ ███████╗███╗   ██╗██╗  ██╗ █████╗  ██████╗ ███████╗███╗   ██╗\n" +
+                "██╔════╝██╔═══██╗██╔══██╗██╔════╝████╗  ██║██║  ██║██╔══██╗██╔════╝ ██╔════╝████╗  ██║\n" +
+                "██║     ██║   ██║██████╔╝█████╗  ██╔██╗ ██║███████║███████║██║  ███╗█████╗  ██╔██╗ ██║\n" +
+                "██║     ██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║██╔══██║██╔══██║██║   ██║██╔══╝  ██║╚██╗██║\n" +
+                "╚██████╗╚██████╔╝██║     ███████╗██║ ╚████║██║  ██║██║  ██║╚██████╔╝███████╗██║ ╚████║\n" +
+                " ╚═════╝ ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝");
+        System.out.println("Press any button to continue.");
+        input.nextLine();
 
-        System.out.println(
+        System.out.println(""+
                         "██████╗ ███████╗ ██████╗███████╗███╗   ███╗██████╗ ███████╗██████╗      ██╗██████╗ ████████╗██╗  ██╗    ██████╗  ██████╗ ██████╗  ██╗\n" +
                         "██╔══██╗██╔════╝██╔════╝██╔════╝████╗ ████║██╔══██╗██╔════╝██╔══██╗    ███║╚════██╗╚══██╔══╝██║  ██║    ╚════██╗██╔═████╗╚════██╗███║\n" +
                         "██║  ██║█████╗  ██║     █████╗  ██╔████╔██║██████╔╝█████╗  ██████╔╝    ╚██║ █████╔╝   ██║   ███████║     █████╔╝██║██╔██║ █████╔╝╚██║\n" +
                         "██║  ██║██╔══╝  ██║     ██╔══╝  ██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗     ██║██╔═══╝    ██║   ██╔══██║    ██╔═══╝ ████╔╝██║██╔═══╝  ██║\n" +
                         "██████╔╝███████╗╚██████╗███████╗██║ ╚═╝ ██║██████╔╝███████╗██║  ██║     ██║███████╗   ██║   ██║  ██║    ███████╗╚██████╔╝███████╗ ██║\n" +
                         "╚═════╝ ╚══════╝ ╚═════╝╚══════╝╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═╝");
-
-        System.out.println("\n" +
-                "██████ ███████╗██████╗█████╗██████╗███████╗   ██████╗██████╗██████╗██████████╗   ████╗  ██╗█████╗ ██████╗██████████╗   ██╗\n" +
-                "██╔════██╔════██╔════██╔══████╔═█████╔════╝  ██╔════██╔═══████╔══████╔════████╗  ████║  ████╔══████╔════╝██╔════████╗  ██║\n" +
-                "█████╗ ██████ ██║    █████████████╔█████╗    ██║    ██║   ████████╔█████╗ ██╔██╗ ██████████████████║  ████████╗ ██╔██╗ ██║\n" +
-                "██╔══╝ ╚════█ ██║    ██╔══████╔═══╝██╔══╝    ██║    ██║   ████╔═══╝██╔══╝ ██║╚██╗████╔══████╔══████║   ████╔══╝ ██║╚██╗██║\n" +
-                "██████ ███████╚████████║  ████║    ███████╗  ╚██████╚██████╔██║    █████████║ ╚██████║  ████║  ██╚██████╔█████████║ ╚████║");
         System.out.println("Press any button to continue.");
         input.nextLine();
 
@@ -70,8 +94,6 @@ public class Chapters {
         player.setPlayerName(name);
         System.out.println("\nPress any button to continue.");
         input.nextLine();
-
-        Battle fight = new Battle(firstEnemy, player, utilities);
 
         System.out.println(
                 ".             .        .     .     |--|--|--|--|--|--|  |===|==|   /    i\n" +
@@ -110,19 +132,21 @@ public class Chapters {
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
-        System.out.println("You stand up and go pick up your backpack”.\n" +
-                "“Then you go to your locker and pick up your weapons”.\n" +
-                "“You now have a Heckler Koch MP7A2 PDW”.\n" +
-                "“Firing at an insane 950 rounds per minute, and with effective kill-range around 200 meters out, the 9mm cartridge will do the neat trick of stopping any of the infected lifeforms outside of your safehouse”.\n" +
-                "“Weighing just over 2 kilos, loaded, your weapon is fast, but only carries 20 rounds in your standard magazine. But with the stock folded out, it’s fairly accurate within its killzone. " +
-                "\nUse ammo wisely, and this weapon will keep you alive”.\n" +
-                "“If only you had a good sight on it”.\n" +
-                "“You should be on the lookout for a proper sight, like the tritium-illuminated night sight”.\n" +
+        System.out.println("You stand up and go pick up your backpack.\n" +
+                "Then you go to your locker and pick up your weapons.\n" +
+                "You now have a Heckler Koch MP7A2 PDW.\n" +
+                "Firing at an insane 950 rounds per minute, and with effective kill-range around 200 meters out," +
+                "\nthe 9mm cartridge will do the neat trick of stopping any of the infected lifeforms outside of your safehouse.\n" +
+                "Weighing just over 2 kilos, loaded, your weapon is fast, but only carries 20 rounds in your standard magazine." +
+                "\nBut with the stock folded out, it’s fairly accurate within its killzone. " +
+                "\nUse ammo wisely, and this weapon will keep you alive.\n" +
+                "If only you had a good sight on it.\n" +
+                "You should be on the lookout for a proper sight, like the tritium-illuminated night sight.\n" +
                 "\n" +
                 "You also pick up a hefty little handaxe, great for hacking stuff to pieces.\n" +
                 "You go look out the window.\n" +
                 "\n" +
-                "“You are looking down the street on Rosenvængets Hovedvej.");
+                "You are looking down the street on Rosenvængets Hovedvej.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
@@ -190,12 +214,12 @@ public class Chapters {
 
         System.out.println(
                 "The infected\n" +
-                ".........\n" +
-                ";(6) (o);\n" +
-                " \\\" o //   SHREIKS..  \n"+
-                " ( HHH )\n" +
-                " _)   (_ \n" +
-                "");
+                        ".........\n" +
+                        ";(6) (o);\n" +
+                        " \\\" o //   SHREIKS..  \n"+
+                        " ( HHH )\n" +
+                        " _)   (_ \n" +
+                        "");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
@@ -206,15 +230,17 @@ public class Chapters {
         //First fight
         fight.turnController(firstEnemy, player);
 
-        System.out.println("Next fight:\n" + "You notice a good old HE handgrenade, hanging from the belt of the infected, you just killed. You pick it up."); //TODO overgang er lidt mærkelig her. Måske mere tekst inden næste kamp?
+        System.out.println("Next fight:\n" + "You notice a good old HE handgrenade, hanging from the belt of the infected, you just killed. You pick it up.");
 
         //Second fight
         fight.turnController(secondEnemy, player);
-        System.out.println("As you look upon the now eviscerated infected person, you see that unexpectedly this specimen also carries a HE handgrenade, only in its pocket.\n" + //TODO Stemmer ikke overens med player reward. Player får 1x granat og 2 skud til MP
-                "You pick it up, saving it for later use.\n");
+        System.out.println("As you look upon the now eviscerated infected person, you see that unexpectedly this specimen also carries a HE handgrenade, only in its pocket.\n" +
+                "You pick it up, saving it for later use.");
+        System.out.println("\nPress any button to continue.");
+        input.nextLine();
 
         System.out.println(
-                        "███████╗██╗██████╗ ███████╗████████╗     ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗ \n" +
+                "███████╗██╗██████╗ ███████╗████████╗     ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗ \n" +
                         "██╔════╝██║██╔══██╗██╔════╝╚══██╔══╝    ██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n" +
                         "█████╗  ██║██████╔╝███████╗   ██║       ██║     ███████║███████║██████╔╝   ██║   █████╗  ██████╔╝\n" +
                         "██╔══╝  ██║██╔══██╗╚════██║   ██║       ██║     ██╔══██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██╔══██╗\n" +
@@ -222,28 +248,29 @@ public class Chapters {
                         "╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝        ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝");
         System.out.println(
                 " ██████╗ ██████╗ ███╗   ███╗██████╗ ██╗     ███████╗████████╗███████╗\n" +
-                "██╔════╝██╔═══██╗████╗ ████║██╔══██╗██║     ██╔════╝╚══██╔══╝██╔════╝\n" +
-                "██║     ██║   ██║██╔████╔██║██████╔╝██║     █████╗     ██║   █████╗  \n" +
-                "██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██╔══╝  \n" +
-                "╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ███████╗\n" +
-                " ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚══════╝  " );
+                        "██╔════╝██╔═══██╗████╗ ████║██╔══██╗██║     ██╔════╝╚══██╔══╝██╔════╝\n" +
+                        "██║     ██║   ██║██╔████╔██║██████╔╝██║     █████╗     ██║   █████╗  \n" +
+                        "██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██╔══╝  \n" +
+                        "╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ███████╗\n" +
+                        " ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚══════╝  " );
         System.out.println("Press any button to continue.\n");
         input.nextLine();
 
     }
-    public void chapter_2() {
-        Utilities utilities = new Utilities();
-        Enemy horde = new Enemy("The Horde", 99, 0, 1000, 1001);
 
-        Battle fight = new Battle(horde, player, utilities);
+    //Chapter 2 starts here
+    public void chapter_2() {
+        Enemy horde = new Enemy("The Horde", 99, 0, 1000, 1001, infectedShouts,deathShouts,0 ,0 ,0 ,0 ,0);
+
+        Battle fight = new Battle(horde, player);
 
         System.out.println("\n" +
-                        "███████╗███████╗ ██████╗ ██████╗ ███╗   ██╗██████╗      ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗ \n"+
-                        "██╔════╝██╔════╝██╔════╝██╔═══██╗████╗  ██║██╔══██╗    ██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n"+
-                        "███████╗█████╗  ██║     ██║   ██║██╔██╗ ██║██║  ██║    ██║     ███████║███████║██████╔╝   ██║   █████╗  ██████╔╝\n"+
-                        "╚════██║██╔══╝  ██║     ██║   ██║██║╚██╗██║██║  ██║    ██║     ██╔══██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██╔══██╗\n"+
-                        "███████║███████╗╚██████╗╚██████╔╝██║ ╚████║██████╔╝    ╚██████╗██║  ██║██║  ██║██║        ██║   ███████╗██║  ██║\n"+
-                        "╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝");
+                "███████╗███████╗ ██████╗ ██████╗ ███╗   ██╗██████╗      ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗ \n"+
+                "██╔════╝██╔════╝██╔════╝██╔═══██╗████╗  ██║██╔══██╗    ██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n"+
+                "███████╗█████╗  ██║     ██║   ██║██╔██╗ ██║██║  ██║    ██║     ███████║███████║██████╔╝   ██║   █████╗  ██████╔╝\n"+
+                "╚════██║██╔══╝  ██║     ██║   ██║██║╚██╗██║██║  ██║    ██║     ██╔══██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██╔══██╗\n"+
+                "███████║███████╗╚██████╗╚██████╔╝██║ ╚████║██████╔╝    ╚██████╗██║  ██║██║  ██║██║        ██║   ███████╗██║  ██║\n"+
+                "╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝");
         System.out.println("Press any button to continue.");
         input.nextLine();
 
@@ -253,7 +280,7 @@ public class Chapters {
         input.nextLine();
 
         System.out.println("A heartcurling roar snaps you to attention, and you are acutely aware of just how exposed you are on a large street," +
-                "\n with nowhere to go but forwards, as the resounding howls come from down towards Nordre Frihavnsgade.");
+                "\nwith nowhere to go but forwards, as the resounding howls come from down towards Nordre Frihavnsgade.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
@@ -266,22 +293,22 @@ public class Chapters {
         System.out.println("You race your newfound bike around the bend, onto Østbanegade, spotting the walking-bridge around 50 meters ahead.\n" +
                 "You also spot something else.\n" +
                 "Ahead of you, the whole street is filled with infected," +
-                "\n massing about, heads snapping to attention, as they notice the squeaking of your bikes gears.");
+                "\nmassing about, heads snapping to attention, as they notice the squeaking of your bikes gears.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
         System.out.println("You race up the stairs, on to the bridge, and hauls ass across.\n" +
-                "You won't make it, unless you do something drastic.\n");
+                "You won't make it, unless you do something drastic.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
         System.out.println("You - pedalling for your life - grab a grenade, and pull the pin with your teeth, splitting your lip in the process.\n" +
-                "You drop the grenade softly onto the concrete of the bridge - lettin it roll after you - counting the seconds before detonation."); //TODO der mangler noget tekst/historie før kampen
+                "You drop the grenade softly onto the concrete of the bridge - lettin it roll after you - counting the seconds before detonation.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
         //Third fight
-        fight.turnController(horde, player); //TODO Granat er allerede gået af her. Tekst nedenunder stemmer ikke overens.
+        fight.turnController(horde, player);
 
         System.out.println("One...");
         System.out.println("\nPress any button to continue.");
@@ -309,15 +336,15 @@ public class Chapters {
 
         System.out.println(
                 "      _,                _.\n" +
-                "     (  `)            (`  ).\n" +
-                "  .=( ` ,_ `)    .-``(      ).\n" +
-                " (.__.:-`-_.'   (.,,(.       '`.\n" +
-                "                      `--`--`'`\n" +
-                "         ____.........__H_\n" +
-                "      __/%%%%|%%%%%%%|%%%%\\\n" +
-                " _ ()/%%|:II:|II:::II|:II:|_ _ _\n" +
-                "|-(()|--|:II:|II:H:II|:II:|-|-|-|\n" +
-                "`'.'\"^  ^` \"^ \"^|\"|^'\"' `^`-.^~'");
+                        "     (  `)            (`  ).\n" +
+                        "  .=( ` ,_ `)    .-``(      ).\n" +
+                        " (.__.:-`-_.'   (.,,(.       '`.\n" +
+                        "                      `--`--`'`\n" +
+                        "         ____.........__H_\n" +
+                        "      __/%%%%|%%%%%%%|%%%%\\\n" +
+                        " _ ()/%%|:II:|II:::II|:II:|_ _ _\n" +
+                        "|-(()|--|:II:|II:H:II|:II:|-|-|-|\n" +
+                        "`'.'\"^  ^` \"^ \"^|\"|^'\"' `^`-.^~'");
         System.out.println("Press any button to continue.\n");
         input.nextLine();
 
@@ -332,22 +359,22 @@ public class Chapters {
 
         System.out.println("The events of the day has taken a toll on you, and you find yourself exhausted.\n" +
                 "You can seal yourself inside the armory as protection against the infected, although it ain't exactly the most comfortable bedding," +
-                "\n old MRE-boxes or ammo crates.");
+                "\nold MRE-boxes or ammo crates.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
         System.out.println("Succumbing to sleep, you close your eyes, and hope that you'll wake up easily in the morning," +
-                "\n and not the a couple of infected tearing at your flesh, until the disease sets in, and you are doomed to their fate.");
+                "\nand not the a couple of infected tearing at your flesh, until the disease sets in, and you are doomed to their fate.");
         System.out.println("\nPress any button to continue.");
         input.nextLine();
 
         System.out.println(
-                "███████╗███████╗ ██████╗ ██████╗ ███╗   ██╗██████╗      ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗\n" +
-                "██╔════╝██╔════╝██╔════╝██╔═══██╗████╗  ██║██╔══██╗    ██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n" +
-                "███████╗█████╗  ██║     ██║   ██║██╔██╗ ██║██║  ██║    ██║     ███████║███████║██████╔╝   ██║   █████╗  ██████╔╝\n" +
-                "╚════██║██╔══╝  ██║     ██║   ██║██║╚██╗██║██║  ██║    ██║     ██╔══██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██╔══██╗\n" +
-                "███████║███████╗╚██████╗╚██████╔╝██║ ╚████║██████╔╝    ╚██████╗██║  ██║██║  ██║██║        ██║   ███████╗██║  ██║\n" +
-                "╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝");
+                        "███████╗███████╗ ██████╗ ██████╗ ███╗   ██╗██████╗      ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗\n" +
+                        "██╔════╝██╔════╝██╔════╝██╔═══██╗████╗  ██║██╔══██╗    ██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n" +
+                        "███████╗█████╗  ██║     ██║   ██║██╔██╗ ██║██║  ██║    ██║     ███████║███████║██████╔╝   ██║   █████╗  ██████╔╝\n" +
+                        "╚════██║██╔══╝  ██║     ██║   ██║██║╚██╗██║██║  ██║    ██║     ██╔══██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██╔══██╗\n" +
+                        "███████║███████╗╚██████╗╚██████╔╝██║ ╚████║██████╔╝    ╚██████╗██║  ██║██║  ██║██║        ██║   ███████╗██║  ██║\n" +
+                        "╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝");
         System.out.println(
                         " ██████╗ ██████╗ ███╗   ███╗██████╗ ██╗     ███████╗████████╗███████╗\n" +
                         "██╔════╝██╔═══██╗████╗ ████║██╔══██╗██║     ██╔════╝╚══██╔══╝██╔════╝\n" +
@@ -360,13 +387,23 @@ public class Chapters {
 
     }
 
+    //Chapter 3 starts here
     public void chapter_3() {
+        Enemy infected1 = new Enemy("Infected",150,10,10,20, infectedShouts, deathShouts, 5, 4, 0, 3, 1);
+        Enemy infected2 = new Enemy("Infected",150,10,10,20, infectedShouts, deathShouts,7, 6, 0, 2, 2);
+        Enemy boss1 = new Enemy("The Infected Andracs", 250, 20, 20, 30, boss1Shouts, deathShouts,0, 0, 0, 0, 0);
+        Enemy boss2 = new Enemy("The Infected Karsten",250,20,20,30, boss2Shouts, deathShouts,0, 0, 0, 0, 0);
 
-        Utilities utilities = new Utilities();
+        Battle fight = new Battle(infected1, player);
 
-        Enemy boss1 = new Enemy("Andracs", 250, 20, 20, 30);
-
-        Battle fight = new Battle(boss1, player, utilities);
+        System.out.println(
+                        "████████╗██╗  ██╗██╗██████╗ ██████╗      ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗███████╗██████╗ \n" +
+                        "╚══██╔══╝██║  ██║██║██╔══██╗██╔══██╗    ██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n" +
+                        "   ██║   ███████║██║██████╔╝██║  ██║    ██║     ███████║███████║██████╔╝   ██║   █████╗  ██████╔╝\n" +
+                        "   ██║   ██╔══██║██║██╔══██╗██║  ██║    ██║     ██╔══██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██╔══██╗\n" +
+                        "   ██║   ██║  ██║██║██║  ██║██████╔╝    ╚██████╗██║  ██║██║  ██║██║        ██║   ███████╗██║  ██║\n" +
+                        "   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝\n" +
+                        "                                                                                                 ");
 
         System.out.println("You wake up, feeling refreshed and ready to continue your journey.\n" +
                 "You arise inside the locked up armory, and quickly notice the peace and quiet outside");
@@ -383,55 +420,181 @@ public class Chapters {
 
         System.out.println("Now decide!");
         System.out.println("Type \"Rådhuspladsen\" or \"Politigården\" \n");
-        input.nextLine();
 
+        //This boolean makes sure the while loop can continue, even if the player enters the wrong text
         boolean stop = false;
+        while (!stop) {
+            String choice = input.nextLine().toLowerCase();
 
-        while(!stop){
-            input.nextLine();
-            String choice = input.nextLine();
-            if (choice.equals("Rådhuspladsen")) {
+            //This if statement controls which path the player wants to take in the story
+            if (choice.equals("rådhuspladsen")) {
                 System.out.println("You decided to jog towards Rådhuspladsen, moving cautiously but fast.\n" +
                         "Your weapons are loaded, and you head out, feeling hopeful that today is the day, you finally Escape From Copenhagen.");
+                System.out.println("\nPress any button to continue.");
                 input.nextLine();
 
                 System.out.println("The run through the city goes on rather uneventful, although not exactly quiet,\n" +
-                        " as the terrible sounds of the infected fills the cityscape with nightmarish noise." +
-                        "You head into the Hovedbrandstationen, finding it deserted, but luckily, unlooted.\n");
+                        "as the terrible sounds of the infected fills the cityscape with nightmarish noise." +
+                        "You head into the Hovedbrandstationen.");
+                System.out.println("\nPress any button to continue.");
                 input.nextLine();
 
-                System.out.println("Inside, you find the keys to one of the fire-department's rescue-boats.");
+                System.out.println("At the entrance, you turn the handle, and are immediately thrown backwards as a couple of infected burst out the door and attack you!");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
 
-                stop = true;
-            }
-            else if (choice.equals("Politigården")) {
+                //Fourth and sixth fight
+                fight.turnController(infected1, player);
+                fight.turnController(infected2,player);
 
+                System.out.println("You defeated the two infected people, and although tired and battered, you forge on.\n" +
+                        "You enter the building, through the destroyed door.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("Inside, you find the keys to one of the fire-department's rescue-boats.\n" +
+                        "Having looted the fire station, you make your way outside, only to behold a soul-crushing sight.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("Standing in front of you, on the cracked tarmac, and looking like you just deleted all of its repos on Github, stands...\n" +
+                        "The Infected Andrács!\n" +
+                        "A most terrible foe, with mutated muscles and an enormous appetite - both for flesh, destruction and sometimes beer,\n" +
+                        "The Infected Andrács spells doom for you.\n");
+                System.out.println(
+                        "            ,                                         \n" +
+                        "        _,-\"\"-._                                    \n" +
+                        "      ,\"        \".                                  \n" +
+                        "     /    ,-,  ,\"\\     ENOUGH WITH THE CODE SMELL.. \n" +
+                        "    \"    /   \\ | o|    GRRR..                       \n" +
+                        "    \\    `-o-\"  `-',                                \n" +
+                        "     `,   _.--'`'--`                                  \n" +
+                        "       `--`---'                                       \n" +
+                        "         ,' '                                         \n" +
+                        "       ./ ,  `,                                       \n" +
+                        "       / /     \\                                     \n" +
+                        "      (_)))_ _,\"                                     \n" +
+                        "         _))))_,                                      \n" +
+                        "--------(_,-._)))------");
+
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("The Infected Andrács roars, challenging you to fight him. In a most distorted voice, he bellows:\n" +
+                        "\"You are not worthy of this object! You are only sub-class! Now I'll delete you, you little noob!\"");
+
+                fight.turnController(boss1, player);
+
+                System.out.println("You have defeated The Infected Andrács!\n" +
+                        "Congratulations!\n \n" +
+                        "██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗██╗\n" +
+                        "╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║██║\n" +
+                        " ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║██║\n" +
+                        "  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║██║╚██╗██║╚═╝\n" +
+                        "   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║██╗\n" +
+                        "   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝");
+                controller.start();
                 stop = true;
-            }
-            else {
+            } else if (choice.equals("politigården")) {
+
+                System.out.println("You decide to walk to Politigården, and that means you will have to wait for a while longer, till night sets in.\n" +
+                        "You use the day to check your gear, get batteries in your night-sight and laser-attachment and to get a bit of shuteye, before the long night.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("Night has fallen.\n" +
+                        "It's time to head out.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("You stalk out of the armory and head into the city proper.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("The night-sight sticks to your face, letting you see enough to both walk and fight.\n" +
+                        "The walk through the city goes on rather uneventful, although not exactly quiet,\n" +
+                        "as the terrible sounds of the infected fills the cityscape with nightmarish noise, nighttime making it even more terrifying.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("As you walk underneath Knippelsbro, you are knocked down as a great force pushes you to the ground.\n" +
+                        "Through your night-sights you are confronted by a terror-inducing visage, its one eye hanging - half eaten - from its socket.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                fight.turnController(infected1, player);
+
+                System.out.println("A growl from behind a pillar, alerts you to another infected, rushing you,\n" +
+                        "and you must snap your laser-attached weapon towards it.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                fight.turnController(infected2, player);
+
+                System.out.println("As the last bullet enters the skull of the infected, you instantly rush to your feet,\n" +
+                        "not missing a step as you start running towards Politigården ");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("Arriving at the darkest of night, you quickly rummage through Politigården and find keys for a nearby RIB, lying down near Kalvebod Brygge.\n" +
+                        "You walk out the double doors.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("You emerge, sweat running all over, and having almost depleted your energy, you really are not ready for what awaits you in the courtyard.");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("In front of you is the most gruesome enemies yet, The Infected Karsten!\n" +
+                        "He roars, meat spilling from his mouth, and whatever he is trying to say is reduced to the garbled words:");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println(
+                        "           _     _                                   \n" +
+                        "           /\\.--/\\   MY BOAT...                   \n" +
+                        "           \\_ _  \\//\\    NOKIA RULES...                            \n" +
+                        "         __/o o`     |   MUST FIND STUDENTS...\n" +
+                        "        (/           |                               \n" +
+                        "         \\__,        /                               \n" +
+                        "        __\\-'       /                                \n" +
+                        "   .-'``\\ /`\"-=.-=\"`)                                \n" +
+                        " /`  _.-.'          \\                                \n" +
+                        " \\_.\"   ,`-._ /    /_\\                               \n" +
+                        "       /     /-.._/ |                                \n" +
+                        "      |     /    /  |                                \n" +
+                        "     ,|    '.__.'   |                                \n" +
+                        " _  /  \\     .-\"\".  /                                \n" +
+                        "/ \\/   /`-._|     |`                                 \n" +
+                        "\\  \\  /     \\     |                                  \n" +
+                        " \\   /       \\    |                                  \n" +
+                        "  '-'         `.  |                                  \n" +
+                        "           .-\"`   \\                                  \n" +
+                        "           \\__,.-'`                                  ");
+                System.out.println("\nPress any button to continue.");
+                input.nextLine();
+
+                System.out.println("He then attacks you furiously!");
+
+                fight.turnController(boss2, player);
+
+                System.out.println("You have defeated The Infected Karsten!\n" +
+                        "Congratulations!\n \n" +
+                        "██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗██╗\n" +
+                        "╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║██║\n" +
+                        " ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║██║\n" +
+                        "  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║██║╚██╗██║╚═╝\n" +
+                        "   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║██╗\n" +
+                        "   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝");
+                    controller.start();
+                stop = true;
+            } else {
                 System.out.println("You have to decide between either \"Rådhuspladsen\" or \"Politigården\".");
             }
         }
     }
 }
 
-/*  //TODO final boss??
 
-System.out.println(""+
-        "            ,                                         \n" +
-        "        _,-\"\"-._                                    \n" +
-        "      ,\"        \".                                  \n" +
-        "     /    ,-,  ,\"\\     ENOUGH WITH THE HUMANS..     \n" +
-        "    \"    /   \\ | o|    GRRR..                       \n" +
-        "    \\    `-o-\"  `-',                                \n" +
-        "     `,   _.--'`'--`                                  \n" +
-        "       `--`---'                                       \n" +
-        "         ,' '                                         \n" +
-        "       ./ ,  `,                                       \n" +
-        "       / /     \\                                     \n" +
-        "      (_)))_ _,\"                                     \n" +
-        "         _))))_,                                      \n" +
-        "--------(_,-._)))");
-        fight.turnController(firstEnemy, player);
 
-*/
+

@@ -1,9 +1,9 @@
 package com.company;
-
 import java.util.Random;
 
 public class Player {
 
+    //Instance variables
     private String playerName;
     private int playerHP;
     private int playerAttackMin;
@@ -14,17 +14,13 @@ public class Player {
     private Utilities handgrenade = new Utilities(0);
     private Utilities healingKit = new Utilities(0, 1);
 
-
+    //Constructor
     public Player(String playerName, int playerHP, int playerAttackMin, int playerAttackMax) {
         this.playerName = playerName;
         this.playerHP = playerHP;
         this.playerAttackMin = playerAttackMin;
         this.playerAttackMax = playerAttackMax;
     }
-
-    /*public Player(Utilities mp7A2) { //TODO slet evt.
-        this.mp7A2 = mp7A2;
-    }*/
 
     //Getters and setters
     public int getPlayerHP() {
@@ -34,7 +30,7 @@ public class Player {
         this.playerHP = playerHP;
     }
 
-    //Bruger playerAttackMax og playerAttackMin, til at udregne og return playerAttack
+    //Uses playerAttackMax and PlayerAttackMin, to calculate and return playerAttack
     public int getPlayerAttack() {
         Random random = new Random();
         if (Math.random() > 0.60) {
@@ -48,8 +44,7 @@ public class Player {
             return normalHit;
         }
     }
-
-    //Dette bliver brugt til de forskellige våben spilleren har, på nær basis angreb.
+    //This method gets the damage from the player's weapon utilities and returns it
     public int getPlayerAttackWeapon(Utilities weapon){
         Random random = new Random();
 
@@ -84,25 +79,6 @@ public class Player {
         return healingKit;
     }
 
-    public void setMp7A2(Utilities mp7A2) {
-        this.mp7A2 = mp7A2;
-    }
-
-    public void setColtM10(Utilities coltM10) {
-        this.coltM10 = coltM10;
-    }
-
-    public void setHandgrenade(Utilities handgrenade) {
-        this.handgrenade = handgrenade;
-    }
-
-    public void setHealingKit(Utilities healingKit) {
-        this.healingKit = healingKit;
-    }
-
-    public int getplayerAttackMin() {
-        return playerAttackMin;
-    }
     public int getplayerAttackMax() {
         return playerAttackMax;
     }
@@ -110,6 +86,7 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
+
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
@@ -125,6 +102,5 @@ public class Player {
     public Utilities getHandgrenade() {
         return handgrenade;
     }
-
 
 }
